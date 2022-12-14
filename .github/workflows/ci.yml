@@ -5,9 +5,9 @@ name: Compile, Build and Test the GO command-line app
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
 
