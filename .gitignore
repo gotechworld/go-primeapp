@@ -1,2 +1,5 @@
 .dccache
 .idea/
+bin
+.scannerwork
+.vscode
