@@ -27,6 +27,15 @@ jobs:
         with:
           name: code-coverage-report
           path: bin
+      - name: Posting Action Workflow updates to Slack
+        uses: act10ns/slack@v2
+        with: 
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#github-actions'
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}     
       
   SCA:
     name: Snyk Scanning
@@ -45,6 +54,15 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: snyk.sarif 
+      - name: Posting Action Workflow updates to Slack
+        uses: act10ns/slack@v2
+        with: 
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#github-actions'
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}     
       
 
   SAST:
