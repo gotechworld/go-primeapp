@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repository
-        id: clone repo
+        id: clone-repo
         uses: actions/checkout@master
       - name: Setup go
         id: setup-go
