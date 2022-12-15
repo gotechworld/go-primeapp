@@ -28,7 +28,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+    
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       id: init-codeql
@@ -45,3 +45,14 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+    
+    - name: Posting Action Workflow updates to Slack
+      id: slack-notification
+      uses: act10ns/slack@v2
+      with: 
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+        channel: '#github-actions'
+      if: always()
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
