@@ -31,7 +31,7 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      id: init codeql
+      id: init-codeql
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}   
@@ -41,7 +41,7 @@ jobs:
       uses: github/codeql-action/autobuild@v2
 
     - name: Perform CodeQL Analysis
-      id: analyze codeql
+      id: analyze-codeql
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"

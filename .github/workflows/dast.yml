@@ -12,12 +12,12 @@ jobs:
     name: Scan the web application
     steps:
       - name: Checkout
-        id: checkout repo
+        id: checkout-repo
         uses: actions/checkout@v3
         with:
           ref: master
       - name: ZAP Scan
-        id: zap_scan
+        id: zap-scan
         uses: zaproxy/action-baseline@v0.7.0
         with:
           token: ${{ secrets.VCS_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
       - name: Posting Action Workflow updates to Slack
-        id: slack notification
+        id: slack-notification
         uses: act10ns/slack@v2
         with: 
           status: ${{ job.status }}
