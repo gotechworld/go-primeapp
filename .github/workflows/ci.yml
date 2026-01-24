@@ -95,8 +95,7 @@ jobs:
         id: cache-dependencies
         uses: actions/cache@v4
         with:
-           path: |
-              /go/module/cache
+           path: go-primeapp
            key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
       - name: Analyze with SonarCloud
         id: sonarcloud-scan
