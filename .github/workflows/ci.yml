@@ -93,7 +93,7 @@ jobs:
           path: bin
       - name: Restore build/dependency cache (Example)
         id: cache-dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
            path: go-primeapp
            key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
