@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         id: snyk-scan
-        uses: snyk/actions/golang@master
+        uses: snyk/actions/golang@v6
         continue-on-error: true 
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
