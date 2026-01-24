@@ -91,6 +91,13 @@ jobs:
         with:
           name: code-coverage-report
           path: bin
+      - name: Restore build/dependency cache (Example)
+        id: cache-dependencies
+        uses: actions/cache@v4
+        with:
+           path: |
+              /go/module/cache
+           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
       - name: Analyze with SonarCloud
         id: sonarcloud-scan
         uses: sonarsource/sonarcloud-github-action@v4
