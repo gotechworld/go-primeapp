@@ -1,5 +1,5 @@
 # The stage at which the application is built
-FROM golang:1.19-alpine AS builder
+FROM golang:1.25-alpine AS builder
 RUN apk update && apk add --no-cache git
 WORKDIR /app
 COPY go.mod .
@@ -8,7 +8,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o /app/main .
 
 # The stage at which the application is deployed
-FROM alpine:3.16
+FROM alpine:3.23
 COPY --from=builder /app/main /app/main
 ENTRYPOINT [ "/app/main" ]
 
