@@ -62,7 +62,7 @@ jobs:
           args: --sarif-file-output=snyk.sarif
       - name: Upload result to GitHub Code Scanning
         id: upload-sarif
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: snyk.sarif 
       - name: Posting Action Workflow updates to Slack
