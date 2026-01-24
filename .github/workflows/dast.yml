@@ -1,4 +1,4 @@
-name: Run a Dynamic Application Security Testing
+name: Run a Dynamic Application Security Testing (DAST)
 
 on:
   push:
